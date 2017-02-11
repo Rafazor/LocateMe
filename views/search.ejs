@@ -1,42 +1,42 @@
-<% include partials/header %> 
-   <div class="container">
-       
-       <div class="row">
-               <h1 class="must"><%= data.name %></h1> 
-               <p class="must"> <%= data.weather[0].description %> </p>
-       </div>
-       <hr>
-      <div class="row text-center date">
-               <div class="col-sm-6 col-md-3">
-               <p>Country: <span><%= data.sys.country %></span> </p>
-               </div>
-              <div class="col-sm-6 col-md-3">
-              <p>Temperature: <span><%= data.main.temp %> °C</span>  </p>
-              </div>
-              <div class="col-sm-6 col-md-3">
-               <p>Humidity: <span><%= data.main.humidity %> %</span></p>
-               </div>
-               <div class="col-sm-6 col-md-3">
-               <p>Wind: <span><%= data.wind.speed %>km/h</span>  </p>
-               </div>
-                
-          </div>
-          <div id="map"></div>
-   </div> 
-    <script>
-      function initMap() {
-        var uluru = {lat: <%= data.coord.lat %>, lng: <%= data.coord.lon %>};
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 10,
-          center: uluru
-        });
-        var marker = new google.maps.Marker({
-          position: uluru,
-          map: map
-        });
-      }
-    </script>
-    <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCoIPHb5FZ4QnJ2DXZMNPAvEnIUXqKy2dc&callback=initMap">
-    </script>
+<% include partials/header %>
+<div class="container">
+
+  <div class="row">
+    <h1 class="must"><%= data.name %></h1>
+    <p class="must"> <%= data.weather[0].description %> </p>
+  </div>
+  <hr>
+  <div class="row text-center date">
+    <div class="col-sm-6 col-md-3">
+      <p>Country: <span><%= data.sys.country %></span> </p>
+    </div>
+    <div class="col-sm-6 col-md-3">
+      <p>Temperature: <span><%= data.main.temp %> °C</span>  </p>
+    </div>
+    <div class="col-sm-6 col-md-3">
+      <p>Humidity: <span><%= data.main.humidity %> %</span></p>
+    </div>
+    <div class="col-sm-6 col-md-3">
+      <p>Wind: <span><%= data.wind.speed %>km/h</span>  </p>
+    </div>
+
+  </div>
+  <div id="map"></div>
+</div> 
+<script>
+function initMap() {
+  var uluru = {lat: <%= data.coord.lat %>, lng: <%= data.coord.lon %>};
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 10,
+    center: uluru
+  });
+  var marker = new google.maps.Marker({
+    position: uluru,
+    map: map
+  });
+}
+</script>
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCoIPHb5FZ4QnJ2DXZMNPAvEnIUXqKy2dc&callback=initMap">
+</script>
 <% include partials/footer %>
